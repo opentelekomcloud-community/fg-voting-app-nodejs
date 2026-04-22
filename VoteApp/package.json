@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "Simple voting app for Huawei Cloud FunctionGraph",
-  "main": "index.js",
+  "main": "src/index.js",
   "type": "commonjs",
   "engines": {
     "node": "20.15.1"
@@ -20,7 +20,7 @@
     "run-script-os": "^1.1.6"
   },
   "dependencies": {
-    "@opentelekomcloud-community/otc-api-sign-sdk-nodejs": "^1.0.0"
+    "otc-api-sign-sdk-nodejs":"npm:@opentelekomcloud-community/otc-api-sign-sdk-nodejs@^1.0.0"
   },
   "bundleDependencies": [
     "otc-api-sign-sdk-nodejs"
@@ -28,7 +28,6 @@
   "files": [
     "*.js",
     "src/**/*",
-    "lib/**/*",
     "bootstrap"
   ]
 }

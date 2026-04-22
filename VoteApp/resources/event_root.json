@@ -1,0 +1,5 @@
+{
+    "httpMethod": "GET",
+    "path": "/",
+    "isBase64Encoded": true
+}

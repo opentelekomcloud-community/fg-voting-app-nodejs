@@ -1,0 +1,6 @@
+{
+    "body": "eyJyYXRpbmciOiA1LCAiZmVlZGJhY2siOiAibmljZSJ9",
+    "httpMethod": "POST",
+    "path": "/vote",
+    "isBase64Encoded": true
+}

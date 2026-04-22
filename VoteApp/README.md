@@ -8,21 +8,22 @@ The app provides:
 - a feedback field
 - server-side validation & processing 
 - FunctionGraph-compatible HTTP deployment
-- 
+  
 ## What the app does
 
 - `GET /` serves the voting page.
 - `POST /vote` accepts JSON in the shape `{ "rating": 1-5, "feedback": "..." }`.
 - `GET /health` returns a simple health response.
-- successful votes are written to stdout so they appear in FunctionGraph logs
+- `GET /favicon.ico` return Favicon.
+- successful votes are forwarded to [backend_obs](../backend_obs/README.md) which stores votes in OBS bucket objects.
 
 ## Prerequisites
 
 ### Project eu-de_fg-voting-app created
 
-Create a project **eu-de_fg-voting-app** as described in [../README.md](../README.md)
+Project **eu-de_fg-voting-app** created as described in [../README.md](../README.md)
 
-### Agency created
+### Agency with FunctionGraph "invoke*" permission created
 
 Create an agency using IAM console with following settings:
 
@@ -63,7 +64,7 @@ Use Node.js 20.15.1.
 > ```
 > For details on how to use GitHub Packages, see [Installing a package](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#installing-a-package).
 >
-> if this is not working for you, change this to.
+> if this is not working for you e.g. due to lack of PAT, change this to.
 > ```json
 > "dependencies": {    
 >    "otc-api-sign-sdk-nodejs": "github:opentelekomcloud-community/otc-api-sign-sdk-nodejs#v1.0.0"
@@ -71,20 +72,15 @@ Use Node.js 20.15.1.
 > ```
 > this will source the repository with tag v1.0.0 as dependencies.
 
-
-
 ```bash
 npm install
 ```
-
-
-
 
 ```bash
 npm start
 ```
 
-Open <http://127.0.0.1:8000> in browser.
+Open <http://127.0.0.1:8000> in browser to view the UI. (Clicking "Submit vote" is only working if deployed to FunctionGraph)
 
 ## Deploy to T Cloud Public FunctionGraph
 
@@ -141,7 +137,24 @@ Configure function:
    * Timeout: **5000**
 
 
-## Testing
+## Testing using test events
+
+Create test events:
+
+- **Name:** ui  
+  **Payload:** [event_ui.json](./resources/event_root.json)
+
+- **Name:** health  
+  **Payload:** [event_health.json](./resources/event_health.json)
+
+- **Name:** vote_5start  
+  **Payload:** [event_vote_5star.json](./resources/event_vote_5star.json)  
+  The value of body  `eyJyYXRpbmciOiA1LCAiZmVlZGJhY2siOiAibmljZSJ9` in this event is base64 encoded string of `{"rating": 5, "feedback": "nice"}`
+
+Click `Test` for each single created event and you will see output in `Execution Result` tab (The value of body is base64 encoded).  
+For vote_5star you will find an OBS object in OBS bucket in folder **/vote**.
+
+## Testing using browser
 
 After deployment, open the generated trigger URL.
 
