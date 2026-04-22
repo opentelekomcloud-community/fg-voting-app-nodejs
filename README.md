@@ -21,7 +21,11 @@ See: [backend_obs](./backend_obs/README.md)
 ### VoteApp
 
 FunctionGraph function of type HTTP Function triggered by an APIG trigger.  
-It's the primary user interface for voting.
+It's the primary user interface for voting:
+
+
+<img src="./screenshots/voteapp.png" alt="drawing" width="200"/>
+
 
 Following Endpoints are provided:
 
@@ -44,12 +48,17 @@ See: [VoteApp](./VoteApp/README.md)
 FunctionGraph function of type Event Function triggered by an APIG trigger.
 This function delivers an QR Code for opening the VoteApp.
 
+<img src="./screenshots/qrcode.png" alt="drawing" width="200"/>
+
 See: [QRCode](./QRCode/README.md)
 
 ## ShowResult
 
 FunctionGraph function of type Event Function triggered by an APIG trigger.
 This function is for data visualization and reporting.
+
+<img src="./screenshots/showresults.png" alt="drawing" width="200"/>
+
 It reads vote objects from OBS storage and normalizes 1-5 star vote counts for analytics.
 The UI renders the rating as D3.js bar chart and
 additionally displays a sortable details table for granular review.
@@ -131,8 +140,17 @@ nvm proxy http://PROXY-HOST:PROXY-PORT
 npm config set proxy http://PROXY-HOST:PROXY-PORT
 ```
 
+### GitHub Access
 
-# Resources on T-Cloud Public
+Some npm packages are hosted on GitHub packages.
+To install npm packages from there, a personal access token (PAT) is necessary.
+See [Installing a package](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#installing-a-package) on GitHub.
+
+(e.g.: in [.npmrc](./.npmrc) uncomment the line `#//npm.pkg.github.com/:_authToken=TOKEN`) by removing `#` and replace `TOKEN` with your PAT.
+
+# Required resources on T-Cloud Public
+
+The sample assumes that following resources are installed on T Cloud Public.
 
 ## Project: eu-de_fg-voting-app
 
