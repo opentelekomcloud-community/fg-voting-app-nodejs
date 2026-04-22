@@ -16,7 +16,7 @@ For details on FunctionGraph functions written in Node.JS, see
 FunctionGraph function of type Event Function responsible for persisting votes in an OBS Bucket.
 Individual votes are written as OBS Objects as single json files.
 
-See: [backend_obs](./backend_obs/README.md)
+For details and installation see: [backend_obs](./backend_obs/README.md)
 
 ### VoteApp
 
@@ -41,7 +41,7 @@ Following Endpoints are provided:
 - **GET /health**  
   Endpoint for monitoring
 
-See: [VoteApp](./VoteApp/README.md)
+For details and installation see: [VoteApp](./VoteApp/README.md)
 
 ### QRCode
 
@@ -50,7 +50,7 @@ This function delivers an QR Code for opening the VoteApp.
 
 <img src="./screenshots/qrcode.png" alt="drawing" width="200"/>
 
-See: [QRCode](./QRCode/README.md)
+For details and installation see: [QRCode](./QRCode/README.md)
 
 ## ShowResult
 
@@ -63,7 +63,7 @@ It reads vote objects from OBS storage and normalizes 1-5 star vote counts for a
 The UI renders the rating as D3.js bar chart and
 additionally displays a sortable details table for granular review.
 
-See: [ShowResult](./ShowResult/README.md)
+For details and installation see: [ShowResult](./ShowResult/README.md)
 
 ## Prerequisites
 
@@ -74,30 +74,31 @@ To install in Node.JS on Linux, follow following steps:
 
 1. Install nvm
 
-```bash 
-# install curl if not available:
-sudo apt install curl
-# remove old versions of nodejs and npm
-sudo apt remove nodejs npm
-# get install scripts and install
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
-# load nvm to be present in current session
-source \~/.nvm/nvm.sh
-```
+    ```bash 
+    # install curl if not available:
+    sudo apt install curl
+    # remove old versions of nodejs and npm
+    sudo apt remove nodejs npm
+    # get install scripts and install
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+    # load nvm to be present in current session
+    source \~/.nvm/nvm.sh
+    ```
+
 2. Install node
 
-```bash
-# install Node.JS version 20.15.1 using nvm
-nvm install 20.15.1
+    ```bash
+    # install Node.JS version 20.15.1 using nvm
+    nvm install 20.15.1
 
-# select version 20.15.1 for usage
-nvm use 20.15.1
+    # select version 20.15.1 for usage
+    nvm use 20.15.1
 
-# check version of node
-node -v
-# check version of npm
-npm -v
-```
+    # check version of node
+    node -v
+    # check version of npm
+    npm -v
+    ```
 
 3. npm pack makes use of script file `npm-scripts/postpack.sh`,
    this file must be executable:
@@ -114,18 +115,18 @@ To install Node.JS on Windows, follow following steps:
 
 2. After installation open a Command shell and execute following:
 
-  ```cmd
-  # install Node.JS version 20.15.1 using nvm
-  nvm install 20.15.1
+    ```cmd
+    # install Node.JS version 20.15.1 using nvm
+    nvm install 20.15.1
 
-  # select version 20.15.1 for usage
-  nvm use 20.15.1
+    # select version 20.15.1 for usage
+    nvm use 20.15.1
 
-  # check version of node
-  node -v
-  # check version of npm
-  npm -v
-  ```
+    # check version of node
+    node -v
+    # check version of npm
+    npm -v
+    ```
 
 
 ### Proxy configurations
