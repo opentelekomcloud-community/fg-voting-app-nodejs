@@ -1,0 +1,8 @@
+{
+    "queryStringParameters": {
+        "url": "https://docs.otc.t-systems.com/",
+        "width": "256"
+    },
+    "httpMethod": "GET",
+    "path": "/qrcode"
+}

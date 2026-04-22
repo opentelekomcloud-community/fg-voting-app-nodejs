@@ -1,0 +1,33 @@
+{
+  "name": "functiongraph-qrcode",
+  "version": "1.0.0",
+  "description": "FunctionGraph event function that returns a QR code PNG for a given URL",
+  "author": "T Cloud Public",
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "type": "commonjs",
+  "engines": {
+    "node": "20.15.1"
+  },
+  "cpu": [
+    "x64"
+  ],  
+  "scripts": {
+    "test:invoke": "node -e \"const handler = require('./index').handler; handler({ queryStringParameters: { url: 'https://localhost/' }, httpMethod: 'GET', path: '/'}).then((response) => { console.log(response.statusCode); console.log(response.headers['Content-Type']); console.log(response.body.length > 0 ? 'body-present: ' + response.body : 'body-missing'); }).catch((error) => { console.error(error); process.exit(1); });\"",
+    "postpack": "run-script-os",
+    "postpack:windows": "..\\npm-scripts\\postpack.cmd",
+    "postpack:linux": "bash ../npm-scripts/postpack.sh"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4"
+  },
+  "bundleDependencies": [
+    "qrcode"
+  ],
+  "files": [
+    "*.js"
+  ],
+  "devDependencies": {
+    "run-script-os": "^1.1.6"
+  }
+}

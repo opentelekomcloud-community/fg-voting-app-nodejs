@@ -1,0 +1,30 @@
+{
+  "name": "functiongraph-backend-obs",
+  "version": "1.0.0",
+  "description": "FunctionGraph to store data in OBS",
+  "author": "T Cloud Public",
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "type": "commonjs",
+  "engines": {
+    "node": "20.15.1"
+  },
+  "cpu": [
+    "x64"
+  ],
+  "scripts": {
+    "postpack": "run-script-os",
+    "postpack:windows": "..\\npm-scripts\\postpack.cmd",
+    "postpack:linux": "bash ../npm-scripts/postpack.sh"
+  },
+  "devDependencies": {
+    "esdk-obs-nodejs": "^3.24.3",
+    "run-script-os": "^1.1.6"
+  },
+  "files": [
+    "*.js",
+    "src/**/*",
+    "lib/**/*"
+  ],
+  "bundleDependencies": []
+}
