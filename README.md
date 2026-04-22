@@ -39,7 +39,10 @@ Following Endpoints are provided:
   agency.
 
 - **GET /health**  
-  Endpoint for monitoring
+  Endpoint for monitoring.
+
+- **GET /favicon.ico**  
+  Returns favicon.  
 
 For details and installation see: [VoteApp](./VoteApp/README.md)
 
