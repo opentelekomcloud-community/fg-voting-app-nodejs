@@ -1,10 +1,11 @@
 "use strict";
 const http = require("node:http");
 const { URL } = require("node:url");
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 const { sendSubmissionToBackend } = require("./sendToBackend");
 
+// For FunctionGraph HTTP functions, the PORT must be set to 8000.
 const PORT = 8000;
 const MAX_FEEDBACK_LENGTH = 500;
 const TITLE = process.env.TITLE || "FunctionGraph Demo";
@@ -155,10 +156,17 @@ const server = http.createServer(async (request, response) => {
         const backend_fg_urn = process.env.BACKEND_FG_URN || "";
 
         if (!ak || !sk || !token || !backend_fg_urn) {
-          console.warn(
-            "Missing temporary credentials in headers or backend configuration.\n"+
-            " You need to define an agency with 'FunctionGraph CommonOperations' permission.",
-          );
+          if (!backend_fg_urn) {
+            console.warn(
+              "Backend URN not configured.\n" +
+                " Set the BACKEND_FG_URN environment variable to enable backend integration.",
+            );
+          } else {
+            console.warn(
+              "Missing temporary credentials in headers or backend configuration.\n" +
+                " You need to define an agency with 'FunctionGraph CommonOperations' permission.",
+            );
+          }
 
           sendJson(response, 500, {
             message: `Backend not configured correctly.`,

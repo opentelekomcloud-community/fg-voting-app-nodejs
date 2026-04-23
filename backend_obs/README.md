@@ -71,3 +71,5 @@ Create a test event:
   - Create a test event using `Blank Template` with:
   - Name: **rating_5**
   - Payload: use json data from [resources/test_event.json](resources/test_event.json)
+
+Executing test form the FunctionGraph console will store the data in path `/test` of the OBS bucket.

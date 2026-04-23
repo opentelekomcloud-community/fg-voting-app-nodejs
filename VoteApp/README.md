@@ -102,13 +102,13 @@ Open <http://127.0.0.1:8000> in browser to view the UI. (Clicking "Submit vote" 
 
 In project **eu-de_fg-voting-app**, create following FunctionGraph function using FunctionGraph console:
 
-Create function
+Create function:
 - Create with: **Create from scratch**
  - Function Type: **HTTP Function**
  - Region: **eu-de/fg-voting-app**
  - FunctionName: **voteApp**
  - Enterprise Project: **default**
- - Agency: fg-voting-app_voteapp
+ - Agency: **fg-voting-app_voteapp**
 
 In **Code** tab, section **Code Source** click `Upload -> Local Zip` and upload `functiongraph-voting-app-1.0.0.zip` on the code page.
 
@@ -119,8 +119,8 @@ Configure function:
     - Log Stream: **lts-stream-voteapp**
 
 - `Environment variables` (Optional, defaults are shown here)
-    - BACKEND_FG_URN = [URN from backend_obs functiongraph]
-    - TITLE = FunctionGraph Demo
+    - **BACKEND_FG_URN** = **[URN from backend_obs functiongraph]**
+    - **TITLE** = **FunctionGraph Demo**
 
 - `Advanced Settings`
     - Include Keys: **enable** 
