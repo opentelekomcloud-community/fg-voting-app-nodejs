@@ -20,7 +20,8 @@ For details and installation see: [backend_obs](./backend_obs/README.md)
 
 ### VoteApp
 
-FunctionGraph function of type HTTP Function triggered by an APIG trigger.  
+FunctionGraph function of type HTTP Function using the Node.js included HTTP module to create the HTTP server.
+The function is triggered by an APIG trigger.  
 It's the primary user interface for voting:
 
 
