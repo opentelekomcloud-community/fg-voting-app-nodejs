@@ -68,12 +68,12 @@ npm run test:invoke
 ### Prepare deployment
 
 1. Install dependencies
-2. 
+ 
     ```bash
     npm install
     ```
 
-3. Create the deployment ZIP from the project root:
+2. Create the deployment ZIP from the project root:
  
     ```bash
     npm pack
@@ -151,8 +151,8 @@ To test, click on `Test` and in `Execution Result` tab you sould see output like
   "body": "iVBOR ... =="
 }
 ```
-*(Remark: the body value in above example is shortend)*
+*(Remark: the body value in above example is shortened)*
 
-The body value contains the base64 encoded qrcode png file.
+The body value contains the base64 encoded qrcode png file. Encoded in the QR code is the url passed as a url query parameter of the GET request.
 
 You can use this value, eg. in [Base64 Guru - Base64 to PNG](https://base64.guru/converter/decode/image/png) to verify the result.

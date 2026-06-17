@@ -1,16 +1,16 @@
-# ShowResults
+# ShowResult
 
 Example of a Node.js 20.15 event function with an APIG trigger 
 for T Cloud Public FunctionGraph that returns the results of the VoteApp.
 
 # Prerequisites
 
-## Deployed FunctionGraphs 'backen_obs', 'HttpVoteApp'
+## Deployed FunctionGraphs 'backend_obs', 'VoteApp'
 
 Following FunctionGraph functions need to deployed first:
 
-- backend_obs, see: [backend_obs/README.md](backend_obs/README.md)
-- HttpVoteApp see: [HttpVoteApp/README.md](HttpVoteApp/README.md)
+- backend_obs, see: [../backend_obs/README.md](../backend_obs/README.md)
+- HttpVoteApp see: [../VoteApp/README.md](../VoteApp/README.md)
 
 ### LogGroup and LogStream created
 
@@ -45,6 +45,9 @@ Configure function:
     - Collect Logs: **enable**
     - Log Group: **lts-group-fg-voting-app**
     - Log Stream: **lts-stream-showresult**
+  - `Environment variables` (Optional, defaults are shown here)
+    - OBS_ENDPOINT = https://obs.eu-de.otc.t-systems.com
+    - OBS_BUCKET_NAME = fg-voting-app-votes
 
 In **Configuration** tab -> **Triggers**:
 - Click `Create Trigger`
