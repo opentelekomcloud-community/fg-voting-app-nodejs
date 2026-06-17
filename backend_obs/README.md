@@ -29,6 +29,7 @@ Create an agency using IAM console with following settings:
 - Description: **Agency for FG Function backend_obs**
 - Permissions:
   - `OBS OperateAccess`
+  - Scope: **All resources**
 
 ### LogGroup and LogStream created
 

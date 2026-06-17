@@ -34,6 +34,7 @@ Create an agency using IAM console with following settings:
 - Description: **Agency for FG Function backend_obs**
 - Permissions:
   - `FunctionGraph CommonOperations`
+  - Scope: **All resources**
 
 ### LogGroup and LogStream created
 
@@ -110,7 +111,7 @@ Create function:
  - Enterprise Project: **default**
  - Agency: **fg-voting-app_voteapp**
 
-In **Code** tab, section **Code Source** click `Upload -> Local Zip` and upload `functiongraph-voting-app-1.0.0.zip` on the code page.
+In **Code** tab, section **Code Source** click `Upload -> Local Zip` and upload `functiongraph-vote-app-1.0.0.zip` on the code page.
 
 Configure function:
 - `Logs`
@@ -130,10 +131,10 @@ Configure function:
    * API Instance: **apig-fg-voting-app**
    * API Name: **API_voteApp**
    * API Group: **DEFAULT**
-   * Environment: **Release**
+   * Environment: **RELEASE**
    * Security Authentication: **None**
    * Protocol: **HTTPS**
-   * Method: **Any**
+   * Method: **ANY**
    * Timeout: **5000**
 
 
@@ -147,7 +148,7 @@ Create test events:
 - **Name:** health  
   **Payload:** [event_health.json](./resources/event_health.json)
 
-- **Name:** vote_5start  
+- **Name:** vote_5star 
   **Payload:** [event_vote_5star.json](./resources/event_vote_5star.json)  
   The value of body  `eyJyYXRpbmciOiA1LCAiZmVlZGJhY2siOiAibmljZSJ9` in this event is base64 encoded string of `{"rating": 5, "feedback": "nice"}`
 
@@ -156,11 +157,11 @@ For vote_5star you will find an OBS object in OBS bucket in folder **/vote**.
 
 ## Testing using browser
 
-After deployment, open the generated trigger URL.
+After deployment, open the generated trigger URL and submit a vote using UI - another object in OBS bucket in folder **/vote** will be created.
 
 
 ## Packaging notes for FunctionGraph
 
 - The app listens on port `8000`, which matches FunctionGraph HTTP function expectations.
 - The `bootstrap` file starts the app with the Node.js 20.15 runtime path documented by FunctionGraph.
-- Keep `index.js`, `package.json`, and `bootstrap` at the root of the ZIP file.
+- Keep `package.json` and `bootstrap` at the root of the ZIP file.
