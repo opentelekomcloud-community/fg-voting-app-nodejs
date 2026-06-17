@@ -164,4 +164,4 @@ After deployment, open the generated trigger URL and submit a vote using UI - an
 
 - The app listens on port `8000`, which matches FunctionGraph HTTP function expectations.
 - The `bootstrap` file starts the app with the Node.js 20.15 runtime path documented by FunctionGraph.
-- Keep `index.js`, `package.json`, and `bootstrap` at the root of the ZIP file.
+- Keep `package.json` and `bootstrap` at the root of the ZIP file.
