@@ -1,5 +1,5 @@
 {
-  "name": "functiongraph-show-result",
+  "name": "functiongraph-showresult",
   "version": "1.0.0",
   "description": "FunctionGraph event function showing the results of the voting app",
   "author": "T Cloud Public",

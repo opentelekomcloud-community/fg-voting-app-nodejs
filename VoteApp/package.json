@@ -1,5 +1,5 @@
 {
-  "name": "functiongraph-vote-app",
+  "name": "functiongraph-voteapp",
   "version": "1.0.0",
   "private": true,
   "description": "Simple voting app for Huawei Cloud FunctionGraph",
