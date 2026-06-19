@@ -183,3 +183,13 @@ In API Gateway console, switch to project **eu-de_fg-voting-app** and click ```C
        - IPv4 CIDR Block: **use default values**
 
 - Security Group: **default**
+
+
+
+> Warranty Disclaimer
+> -------------------
+> THE OPEN SOURCE SOFTWARE IN THIS PRODUCT IS DISTRIBUTED IN THE HOPE THAT IT
+> WILL BE USEFUL,BUT WITHOUT ANY WARRANTY; WITHOUT EVEN THE IMPLIED WARRANTY
+> OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+> 
+> SEE THE APPLICABLE LICENSES FOR MORE DETAILS.
