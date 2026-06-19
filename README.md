@@ -151,7 +151,7 @@ Some npm packages are hosted on GitHub packages.
 To install npm packages from there, a personal access token (PAT) is necessary.
 See [Installing a package](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#installing-a-package) on GitHub.
 
-(e.g.: in [./VoteApp/.npmrc](./VoteApp/.npmrc) uncomment the line `#//npm.pkg.github.com/:_authToken=TOKEN`) by removing `#` and replace `TOKEN` with your PAT.
+(in [.npmrc](./.npmrc) uncomment the line `#//npm.pkg.github.com/:_authToken=TOKEN`) by removing `#` and replace `TOKEN` with your PAT.
 
 # Required resources on T-Cloud Public
 
