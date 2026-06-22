@@ -5,7 +5,7 @@ API Gateway: apig-fg-voting-app
 
 
 In API Gateway console, switch to project **eu-de_fg-voting-app**
- and click Create Dedicated Gateway with following settings:
+and click `Create Dedicated Gateway` with following settings:
 
 - Region: **eu-de_fg-voting-app**
 - AZ: **eu-de-01**
@@ -16,7 +16,8 @@ In API Gateway console, switch to project **eu-de_fg-voting-app**
 
 - Public Outbound Access: **Enabled: checked**
 
-- VPC: **vpc-fg-voting-app**, **subnet-fg-voting-app** Create new, if it does not exist:
+- VPC: **vpc-fg-voting-app**, **subnet-fg-voting-app**
+  Create new, if it does not exist:
 
   - Region: **eu-de_fg-voting-app**
   - Name: **vpc-fg-voting-app**
