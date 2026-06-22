@@ -22,7 +22,7 @@ For details on FunctionGraph functions written in Node.JS, see
 
 ## Overview
 
-![image](./overview.drawio.svg)
+![image](https://opentelekomcloud-community.github.io/fg-voting-app-nodejs/_images/overview.drawio.svg)
 
 ### backend_obs
 
