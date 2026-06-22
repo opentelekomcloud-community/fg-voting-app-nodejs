@@ -67,7 +67,7 @@ This function delivers an QR Code for opening the VoteApp.
 
 <img src="./screenshots/qrcode.png" alt="drawing" width="200"/>
 
-For details and installation see: [QRCode]((https://opentelekomcloud-community.github.io/fg-voting-app-nodejs/QRCode/_index.html))
+For details and installation see: [QRCode](https://opentelekomcloud-community.github.io/fg-voting-app-nodejs/QRCode/_index.html)
 
 ## ShowResult
 
@@ -80,7 +80,7 @@ It reads vote objects from OBS storage and normalizes 1-5 star vote counts for a
 The UI renders the rating as D3.js bar chart and
 additionally displays a sortable details table for granular review.
 
-For details and installation see: [ShowResult]((https://opentelekomcloud-community.github.io/fg-voting-app-nodejs/ShowResult/_index.html))
+For details and installation see: [ShowResult](https://opentelekomcloud-community.github.io/fg-voting-app-nodejs/ShowResult/_index.html)
 
 ## Prerequisites
 
