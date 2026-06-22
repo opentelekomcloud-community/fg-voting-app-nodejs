@@ -3,7 +3,8 @@ const http = require("node:http");
 const { URL } = require("node:url");
 const fs = require("fs");
 const path = require("path");
-const { sendSubmissionToBackend } = require("./sendToBackend");
+const { sendSubmissionToBackendToken } = require("./sendToBackend");
+const { sendSubmissionToBackendAKSK } = require("./sendToBackendSigned");
 
 // For FunctionGraph HTTP functions, the PORT must be set to 8000.
 const PORT = 8000;
@@ -147,41 +148,69 @@ const server = http.createServer(async (request, response) => {
       console.log(JSON.stringify(submission));
 
       {
-        // 1. agency needed
-        // 2. enable "Include Keys" to get ak/sk and token in FunctionGraph configuration
+        // 1. agency needed with FunctionGraph Invoke permission
+        // 2. enable "Include Keys" in FunctionGraph configuration to get credentials in headers
+        // ak,sk, security token used for sendSubmissionToBackendAKSK()
         const ak = request.headers["x-cff-security-access-key"] || "";
         const sk = request.headers["x-cff-security-secret-key"] || "";
-        const token = request.headers["x-cff-security-token"] || "";
+        const securityToken = request.headers["x-cff-security-token"] || "";
+
+        // authToken used for sendSubmissionToBackendToken()
+        const authToken = request.headers["x-cff-auth-token"] || "";
 
         const backend_fg_urn = process.env.BACKEND_FG_URN || "";
 
-        if (!ak || !sk || !token || !backend_fg_urn) {
-          if (!backend_fg_urn) {
-            console.warn(
-              "Backend URN not configured.\n" +
-                " Set the BACKEND_FG_URN environment variable to enable backend integration.",
-            );
-          } else {
-            console.warn(
-              "Missing temporary credentials in headers or backend configuration.\n" +
-                " You need to define an agency with 'FunctionGraph CommonOperations' permission.",
-            );
-          }
+        let iserror = false;
 
+        if (!backend_fg_urn) {
+          console.warn(
+            "Backend URN not configured.\n" +
+              " Set the BACKEND_FG_URN environment variable to enable backend integration.",
+          );
+          iserror = true;
+        }
+
+        if (!authToken) {
+          console.warn(
+            "Missing token credential in headers.\n" +
+              " You need to define an agency with 'FunctionGraph Invoke' permission.",
+          );
+          iserror = true;
+        }
+
+        if (!ak || !sk || !securityToken) {
+          console.warn(
+            "Missing temporary credentials in headers.\n" +
+              " You need to define an agency with 'FunctionGraph Invoke' permission.",
+          );
+          iserror = true;
+        }
+
+        if (iserror) {
           sendJson(response, 500, {
             message: `Backend not configured correctly.`,
           });
-          return;
         } else {
-          let result = await sendSubmissionToBackend(
+          // method 1: use temporary ak/sk/token to invoke backend function
+          // let result = await sendSubmissionToBackendAKSK(
+          //   backend_fg_urn,
+          //   ak,
+          //   sk,
+          //   securityToken,
+          //   submission,
+          // ).catch((err) => {
+          //   console.error("Error sending submission to backend:", err);
+          // });
+
+          // method 2: use token to invoke backend function, no need to handle ak/sk and token expiration
+          let result = await sendSubmissionToBackendToken(
             backend_fg_urn,
-            ak,
-            sk,
-            token,
+            authToken,
             submission,
           ).catch((err) => {
             console.error("Error sending submission to backend:", err);
           });
+
           console.log("Result from backend invocation:", result);
         }
       }

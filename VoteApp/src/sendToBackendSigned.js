@@ -1,16 +1,20 @@
 "use strict";
 const https = require("https");
-
+const { Signer, HttpRequest } = require("otc-api-sign-sdk-nodejs");
 
 /**
- * Sample code to invoke FunctionGraph function with Token.
+ * Sample code to invoke FunctionGraph function with SecuritySAccessKey/SecuritySecretKey and SecurityToken.
  * @param {*} backend_fg_urn  URN of the backend FunctionGraph function
- * @param {*} token token from agency
+ * @param {*} ak security access key from agency
+ * @param {*} sk security secret key from agency
+ * @param {*} token security token from agency
  * @param {*} submission data to be sent to the backend
  * @returns 
  */
-async function sendSubmissionToBackendToken(
-  backend_fg_urn,  
+async function sendSubmissionToBackendAKSK(
+  backend_fg_urn,
+  ak,
+  sk,
   token,
   submission,
 ) {
@@ -35,16 +39,27 @@ async function sendSubmissionToBackendToken(
   const payload = JSON.stringify(body);
 
   // set headers
-  const headers = {    
-    // Host: new URL(fgEndpoint).host,
-    // "X-Project-Id": projectId,
+  const headers = {
     "Content-Type": "application/json;charset=utf8",
-    "x-auth-token": token,
+    Host: new URL(fgEndpoint).host,
+    "X-Project-Id": projectId,
   };
 
-  // send the request
+  // create HttpRequest instance
+  const request = new HttpRequest("POST", invokeURI, headers, payload);
+
+  // create Signer instance and use temporary ak/sk/token to sign the request
+  const signer = new Signer();
+  signer.Key = ak;
+  signer.Secret = sk;
+  signer.SecurityToken = token;
+
+  // sign the request
+  const signedRequest = signer.Sign(request);
+
+  // send the signed request
   return new Promise((resolve, reject) => {
-    const req = https.request(invokeURI, { method: "POST", headers }, (res) => {
+    const req = https.request(signedRequest, (res) => {
       res.setEncoding("utf8");
 
       let responseBody = "";
@@ -73,4 +88,5 @@ async function sendSubmissionToBackendToken(
   });
 }
 
-module.exports = { sendSubmissionToBackendToken };
+
+module.exports = { sendSubmissionToBackendAKSK };
