@@ -10,6 +10,8 @@ It reads vote objects from OBS storage and normalizes 1-5 star vote counts for a
 The UI renders the rating as D3.js bar chart and
 additionally displays a sortable details table for granular review.
 
+For code see: :github_repo_master:`ShowResult <ShowResult>` on GitHub.
+
 Screenshot of the UI
 ---------------------
 

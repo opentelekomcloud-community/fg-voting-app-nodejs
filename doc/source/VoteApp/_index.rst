@@ -11,6 +11,9 @@ The app provides:
 - a feedback field
 - server-side validation & processing 
 
+
+For code see: :github_repo_master:`VoteApp <VoteApp>` on GitHub.
+
 Screenshot of the UI
 ---------------------
  
@@ -24,14 +27,21 @@ What the app does
 
 Exposed Endpoints:
 
-- `GET /` serves the voting page.
-- `POST /vote` accepts JSON in the shape `{ "rating": 1-5, "feedback": "..." }`.
-- `GET /health` returns a simple health response.
-- `GET /favicon.ico` return Favicon.
+- **GET /** serves the voting page.
+- **POST /vote** accepts JSON in the shape `{ "rating": 1-5, "feedback": "..." }`.
+- **GET /health** returns a simple health response.
+- **GET /favicon.ico** return Favicon.
 
 Handling of incoming votes:
 
 - successful votes are forwarded to :ref:`ref_backend_obs` which stores votes in OBS bucket objects.
+  
+
+The examples includes FunctionGraph invoke methods either using
+
+- sending signed requests with **SecurityAccessKey/SecuritySecretKey/SecurityToken** and `API Request signing SDK for NodeJS <https://github.com/opentelekomcloud-community/otc-api-sign-sdk-nodejs>`_ or
+- sending requests using **Token** based authentication.
+
 
 Prerequisites
 --------------------

@@ -8,6 +8,8 @@ for T Cloud Public FunctionGraph that returns a QR code PNG for a given URL.
 
 For QR code generation in this sample the npm package `node-qrcode <https://github.com/soldair/node-qrcode>`_ is used.
 
+For code see: :github_repo_master:`QRCode <QRCode>` on GitHub.
+
 Screenshot of the UI
 ---------------------
 

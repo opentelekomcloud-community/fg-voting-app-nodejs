@@ -3,7 +3,27 @@
 FunctionGraph backend_obs Event Function
 ============================================
 
-FunctionGraph Event function in Node.js 20.15 to store data in OBS bucket objects.
+This FunctionGraph Event function in Node.js 20.15  will be called by 
+FunctionGraph HTTP function :ref:`VoteApp <ref_voteapp>` and will store
+the data in an OBS bucket object in JSON format. 
+
+
+.. code-block:: json
+   :caption: Payload received as event from VoteApp function
+
+    {
+      "rating": 4,
+      "feedback": "Nice work!",
+      "submittedAt": 1776063063502
+    }
+
+
+.. code-block:: json
+   :caption: Example of the JSON data stored in OBS
+
+    {"rating":4,"feedback":"Nice work!","submittedAt":1776063063502}
+
+For code see: :github_repo_master:`backend_obs <backend_obs>` on GitHub.
 
 Prerequisites for backend_obs
 ------------------------------
@@ -29,7 +49,8 @@ Create an agency using IAM console with following settings:
 - Validity Period: **Unlimited**
 - Description: **Agency for FG Function backend_obs**
 - Permissions:
-  - `OBS OperateAccess`
+
+  - **OBS OperateAccess**
   - Scope: **All resources**
 
 Create following LogGroup and LogStream in project **eu-de_fg-voting-app**

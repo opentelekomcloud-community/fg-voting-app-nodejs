@@ -4,6 +4,16 @@ API Gateway: apig-fg-voting-app
 =================================
 
 
+This sample is assumed to use an API Gateway in project **eu-de_fg-voting-app** named **apig-fg-voting-app**.
+
+You can create a new API Gateway in the API Gateway console or use an existing one.
+
+If you use an existing project, make sure to use this during deployment of all resources.
+
+
+Create API Gateway
+-------------------
+
 In API Gateway console, switch to project **eu-de_fg-voting-app**
 and click `Create Dedicated Gateway` with following settings:
 
